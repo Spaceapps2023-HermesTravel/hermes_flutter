@@ -33,6 +33,7 @@ class TopNavigationBar extends StatelessWidget {
           ),
         );
     return Container(
+      margin: EdgeInsets.all(24),
       decoration: BoxDecoration(
         border: Border(
           bottom: BorderSide(color: c.primary),
