@@ -42,7 +42,6 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
 
   @override
   Widget build(BuildContext context) {
-    final t = Theme.of(context);
     return Scaffold(
       body: ListView(
         children: [

@@ -6,6 +6,7 @@ class ToursPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context);
+    final tt = t.textTheme;
     final c = t.colorScheme;
     return Column(
       children: [
@@ -33,14 +34,7 @@ class ToursPage extends StatelessWidget {
             ),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(
-                'Mars',
-                style: TextStyle(
-                  color: c.primary,
-                  fontSize: 86,
-                  fontFamily: 'Ron',
-                ),
-              ),
+              child: Text('Mars', style: tt.displayMedium),
             ),
           ),
         ),

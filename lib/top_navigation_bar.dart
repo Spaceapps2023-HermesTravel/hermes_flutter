@@ -29,10 +29,7 @@ class TopNavigationBar extends StatelessWidget {
           ),
           child: TextButton(
             onPressed: () => onSelected(page),
-            child: Text(
-              page.title,
-              style: tt.headlineSmall!.copyWith(color: c.primary),
-            ),
+            child: Text(page.title, style: tt.headlineMedium),
           ),
         );
     return Container(

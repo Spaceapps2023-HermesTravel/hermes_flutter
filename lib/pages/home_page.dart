@@ -7,6 +7,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context);
+    final tt = t.textTheme;
     final c = t.colorScheme;
     final s = MediaQuery.of(context).size;
     return Column(
@@ -40,23 +41,13 @@ class HomePage extends StatelessWidget {
                 children: [
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                    child: AutoSizeText(
-                      'FROM OUTER SPACE TO OLIMPUS',
-                      maxLines: 1,
-                      style: TextStyle(
-                        color: c.primary,
-                        fontSize: 32,
-                      ),
-                    ),
+                    child: AutoSizeText('FROM OUTER SPACE TO OLIMPUS',
+                        maxLines: 1, style: tt.headlineLarge),
                   ),
                   AutoSizeText(
                     'Hermes',
                     maxLines: 1,
-                    style: TextStyle(
-                      color: c.primary,
-                      fontFamily: 'Ron',
-                      fontSize: 192,
-                    ),
+                    style: tt.displayLarge,
                   ),
                 ],
               ),
@@ -67,7 +58,7 @@ class HomePage extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             "Destinations ready to EXPLORE:",
-            style: TextStyle(fontSize: 28, color: c.primary),
+            style: tt.headlineMedium,
           ),
         ),
         Row(
