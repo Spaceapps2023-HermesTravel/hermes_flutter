@@ -17,7 +17,7 @@ class NasaCertificate extends StatelessWidget {
           color: Color.lerp(c.background, Colors.white, 0.2)!,
           width: 2,
         ),
-        color: Color.lerp(c.background, Colors.white, 0.07),
+          color: Color.lerp(c.background, Colors.white, 0.07),
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
