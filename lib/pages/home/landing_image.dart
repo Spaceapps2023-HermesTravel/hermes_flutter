@@ -19,7 +19,7 @@ class LandingImage extends StatelessWidget {
         ),
       ),
       child: Container(
-        padding: EdgeInsets.all(64),
+        padding: EdgeInsets.only(top: 64, bottom: 0, left: 96, right: 96),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.bottomCenter,
