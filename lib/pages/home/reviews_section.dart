@@ -14,8 +14,9 @@ class ReviewsSection extends StatelessWidget {
       children: [
         Text(
           "Reviews from our Travelers:",
-          style: tt.headlineMedium,
+          style: tt.headlineLarge,
         ),
+        SizedBox(height: 16),
         Row(
           children: [
             Review(
@@ -24,12 +25,14 @@ class ReviewsSection extends StatelessWidget {
               review:
                   "I didn't expect that interplanetary travel could be so fascinating! Mars surprised me with it’s beautiful red scenery. The travel agency took care of every detail, and the scientific excursions were truly educational. I recommend it to anyone who dreams of a unique adventure beyond our planet!",
             ),
+            SizedBox(width: 16),
             Review(
               avatarAsset: 'user2.jpg',
               name: 'Maya',
               review:
                   "Traveling to Mars with Hermes Travel was something I will never forget. The guides were full of passion for space, and each day brought new, exciting discoveries. It was more than just a journey for me - it was a cosmic festival of experiences!",
             ),
+            SizedBox(width: 16),
             Review(
               avatarAsset: 'user3.jpg',
               name: 'Jimmy',
@@ -61,8 +64,8 @@ class Review extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
-      width: 384,
-      height: 256,
+      width: 448,
+      height: 288,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(color: c.onBackground.withAlpha(96)),
@@ -74,13 +77,16 @@ class Review extends StatelessWidget {
           children: [
             Row(
               children: [
-                SizedBox(
-                  width: 64,
-                  height: 64,
-                  child: ClipOval(
-                    child: Image.asset(
-                      'assets/$avatarAsset',
-                      fit: BoxFit.cover,
+                Padding(
+                  padding: const EdgeInsets.all(12),
+                  child: SizedBox(
+                    width: 64,
+                    height: 64,
+                    child: ClipOval(
+                      child: Image.asset(
+                        'assets/$avatarAsset',
+                        fit: BoxFit.cover,
+                      ),
                     ),
                   ),
                 ),
@@ -88,7 +94,10 @@ class Review extends StatelessWidget {
               ],
             ),
             Divider(),
-            Text(review),
+            Text(
+              review,
+              style: tt.bodyMedium,
+            ),
           ],
         ),
       ),

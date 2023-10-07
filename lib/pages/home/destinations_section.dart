@@ -13,13 +13,22 @@ class DestinationsSection extends StatelessWidget {
       children: [
         Text(
           "Destinations ready to EXPLORE:",
-          style: tt.headlineMedium,
+          style: tt.headlineLarge,
         ),
+        SizedBox(height: 16),
         Row(
           children: [
-            RoundedDestinationPreview(),
-            RoundedDestinationPreview(),
-            RoundedDestinationPreview(),
+            RoundedDestinationPreview(
+                backgroundAsset: 'mars.jpg', title: 'Mars'),
+            SizedBox(width: 16),
+            RoundedDestinationPreview(
+                backgroundAsset: 'moon.jpg', title: 'Moon'),
+            SizedBox(width: 16),
+            RoundedDestinationPreview(
+                backgroundAsset: 'iss.jpg', title: 'ISS Museum'),
+            SizedBox(width: 16),
+            RoundedDestinationPreview(
+                backgroundAsset: 'jupiter.jpg', title: 'Jupiter'),
           ],
         ),
       ],
@@ -28,21 +37,29 @@ class DestinationsSection extends StatelessWidget {
 }
 
 class RoundedDestinationPreview extends StatelessWidget {
-  const RoundedDestinationPreview({super.key});
+  final String backgroundAsset;
+  final String title;
+
+  const RoundedDestinationPreview({
+    super.key,
+    required this.backgroundAsset,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
     final t = Theme.of(context);
+    final tt = t.textTheme;
     final c = t.colorScheme;
     return ClipRRect(
       borderRadius: BorderRadius.circular(16),
       child: SizedBox(
-        width: 128,
-        height: 196,
+        width: 288,
+        height: 320,
         child: Stack(
           fit: StackFit.passthrough,
           children: [
-            Image.asset('assets/mars.jpg', fit: BoxFit.cover),
+            Image.asset('assets/$backgroundAsset', fit: BoxFit.cover),
             Align(
               alignment: Alignment.bottomCenter,
               child: ClipRRect(
@@ -51,8 +68,8 @@ class RoundedDestinationPreview extends StatelessWidget {
                   height: 64,
                   width: double.infinity,
                   padding: EdgeInsets.all(8),
-                  color: c.background.withAlpha(128),
-                  child: Text('Mars'),
+                  color: c.background.withAlpha(192),
+                  child: Text(title, style: tt.bodyLarge),
                 ),
               ),
             )

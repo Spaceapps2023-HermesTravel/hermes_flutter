@@ -25,9 +25,12 @@ class HomePage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               DestinationsSection(),
+              SizedBox(height: 16),
               ReviewsSection(),
+              SizedBox(height: 16),
               NasaCertificate(),
-              HermesProvidesSection(),
+              SizedBox(height: 16),
+              // HermesProvidesSection(),
             ],
           ),
         ),

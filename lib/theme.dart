@@ -41,5 +41,8 @@ final darkTheme = _base.copyWith(
     titleMedium: _tt.titleMedium!.copyWith(
       fontSize: 20,
     ),
+    bodyMedium: _tt.bodyMedium!.copyWith(
+      fontSize: 16,
+    ),
   ),
 );
