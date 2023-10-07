@@ -48,12 +48,20 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
           Stack(
             children: [
               AnimatedSwitcher(
-                duration: Duration(milliseconds: 500),
+                duration: Duration(milliseconds: 300),
+                layoutBuilder: (currentChild, previousChildren) => Stack(
+                  alignment: Alignment.topCenter,
+                  children: [
+                    ...previousChildren,
+                    if (currentChild != null) currentChild,
+                  ],
+                ),
                 child: switch (_selectedPage) {
-                  WebsitePage.home => HomePage(),
-                  WebsitePage.tours => ToursPage(),
-                  WebsitePage.handbook => HandbookPage(),
-                  WebsitePage.about => AboutPage(),
+                  // keys are for AnimatedSwitcher to figure it out
+                  WebsitePage.home => HomePage(key: UniqueKey()),
+                  WebsitePage.tours => ToursPage(key: UniqueKey()),
+                  WebsitePage.handbook => HandbookPage(key: UniqueKey()),
+                  WebsitePage.about => AboutPage(key: UniqueKey()),
                 },
               ),
               TopNavigationBar(
