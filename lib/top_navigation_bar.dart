@@ -18,17 +18,17 @@ class TopNavigationBar extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
 
-    Widget button(WebsitePage page) => Container(
-          padding: EdgeInsets.all(16),
-          decoration: BoxDecoration(
-            border: Border(
-              bottom: page == selectedPage
-                  ? BorderSide(color: c.primary, width: 3.0)
-                  : BorderSide.none,
+    Widget button(WebsitePage page) => InkWell(
+          onTap: () => onSelected(page),
+          child: Container(
+            padding: EdgeInsets.all(16),
+            decoration: BoxDecoration(
+              border: Border(
+                bottom: page == selectedPage
+                    ? BorderSide(color: c.primary, width: 3.0)
+                    : BorderSide.none,
+              ),
             ),
-          ),
-          child: TextButton(
-            onPressed: () => onSelected(page),
             child: Text(page.title, style: tt.headlineMedium),
           ),
         );
