@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../top_navigation_bar.dart';
 import 'about_page.dart';
 import 'handbook_page.dart';
-import 'home_page.dart';
+import 'home/home_page.dart';
 import 'tours_page.dart';
 
 class WebsiteScaffold extends StatefulWidget {
@@ -38,7 +38,7 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
     cache('mars-bgn.jpg');
   }
 
-  WebsitePage _selectedPage = WebsitePage.handbook;
+  WebsitePage _selectedPage = WebsitePage.home;
 
   @override
   Widget build(BuildContext context) {
