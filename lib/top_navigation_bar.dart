@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
+import 'pages/website_scaffold.dart';
+
 class TopNavigationBar extends StatelessWidget {
-  const TopNavigationBar({Key? key}) : super(key: key);
+  final Function(WebsitePage selectedPage) onSelected;
+  final WebsitePage selectedPage;
+
+  const TopNavigationBar({
+    Key? key,
+    required this.onSelected,
+    required this.selectedPage,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,18 +18,21 @@ class TopNavigationBar extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
 
-    Widget button(String text, bool isSelected) => Container(
+    Widget button(WebsitePage page) => Container(
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
             border: Border(
-              bottom: isSelected
+              bottom: page == selectedPage
                   ? BorderSide(color: c.primary, width: 3.0)
                   : BorderSide.none,
             ),
           ),
-          child: Text(
-            text,
-            style: tt.headlineSmall!.copyWith(color: c.primary),
+          child: TextButton(
+            onPressed: () => onSelected(page),
+            child: Text(
+              page.title,
+              style: tt.headlineSmall!.copyWith(color: c.primary),
+            ),
           ),
         );
     return Container(
@@ -32,10 +44,10 @@ class TopNavigationBar extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          button('HOME', false),
-          button('TOURS', false),
-          button('HANDBOOK', true),
-          button('ABOUT', false),
+          button(WebsitePage.home),
+          button(WebsitePage.tours),
+          button(WebsitePage.handbook),
+          button(WebsitePage.about),
         ],
       ),
     );
