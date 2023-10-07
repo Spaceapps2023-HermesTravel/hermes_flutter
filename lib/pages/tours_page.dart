@@ -14,7 +14,7 @@ class ToursPage extends StatelessWidget {
           height: 400,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/mars-bgn.jpg'),
+              image: AssetImage('assets/mars.jpg'),
               fit: BoxFit.cover,
             ),
           ),
