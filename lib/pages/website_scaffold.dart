@@ -26,8 +26,8 @@ enum WebsitePage {
 
 class _WebsiteScaffoldState extends State<WebsiteScaffold> {
   @override
-  void initState() {
-    super.initState();
+  void didChangeDependencies() {
+    super.didChangeDependencies();
     // idk if this does anything but 🤷
     cache(String ass) => precacheImage(
           AssetImage('assets/$ass'),
