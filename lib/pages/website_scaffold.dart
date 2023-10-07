@@ -25,6 +25,19 @@ enum WebsitePage {
 }
 
 class _WebsiteScaffoldState extends State<WebsiteScaffold> {
+  @override
+  void initState() {
+    super.initState();
+    // idk if this does anything but 🤷
+    cache(String ass) => precacheImage(
+          AssetImage('assets/$ass'),
+          context,
+        );
+    cache('home-bg.jpg');
+    cache('mars.jpg');
+    cache('mars-bgn.jpg');
+  }
+
   WebsitePage _selectedPage = WebsitePage.handbook;
 
   @override
