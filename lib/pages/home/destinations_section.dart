@@ -38,9 +38,9 @@ class DestinationsSection extends StatelessWidget {
             ),
             SizedBox(width: 16),
             RoundedDestinationPreview(
-              backgroundAsset: 'jupiter.jpg',
-              title: 'Jupiter',
-              route: 'jupiter',
+              backgroundAsset: 'olympus.jpg',
+              title: 'Olympus space station',
+              route: 'olympus',
             ),
           ],
         ),

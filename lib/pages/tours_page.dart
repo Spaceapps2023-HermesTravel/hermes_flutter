@@ -12,7 +12,7 @@ class ToursPage extends StatelessWidget {
   final String offer1title;
   final String offer1attractions;
 
-  final String offer2backgroundAsset;
+  final String? offer2backgroundAsset;
   final String offer2title;
   final String offer2attractions;
 
@@ -57,6 +57,34 @@ class ToursPage extends StatelessWidget {
         offer2title: 'Premium Offer',
         offer2attractions:
             "VIP Moon Tour with a Private Guid\n - Exploring the Moonscape\n - Visit to the light and dark side of the Moon Apollo 11 Landing Site\n - The Moon's Main Communication Port",
+      );
+
+  static get iss => ToursPage(
+        backgroundAsset: 'iss.jpg',
+        title: 'ISS Museum',
+        desc:
+            "The International Space Station Museum (ISSM) is a fascinating institution that has been established within the very heart of this historic structure after its retirement from active use. It is a unique place that allows visitors to explore the secrets of human space exploration.",
+        offer1backgroundAsset: 'iss-edu.jpg',
+        offer1title: 'Educational Offer',
+        offer1attractions:
+            'Exploration of the ISS Museum\n - Spacewalk\n - Earth Observations from the ISS\n - Interactive Presentations and Workshops\n - Culinary Adventure in Space',
+        offer2backgroundAsset: null,
+        offer2title: '',
+        offer2attractions: '',
+      );
+
+  static get olympus => ToursPage(
+        backgroundAsset: 'olympus.jpg',
+        title: 'Olympus space station',
+        desc:
+            "Welcome to Olympus Station! Our Luxury Space Station is designed to provide unforgettable experiences for its guests. This exclusive space station offers not only an incredible view of space but also a full range of luxurious amenities that ensure comfort and entertainment at the highest level.",
+        offer1backgroundAsset: 'olympus-lux.jpg',
+        offer1title: 'Luxurious Offer',
+        offer1attractions:
+            'Exclusive Space Restaurant\n - Space Spa and Relaxation\n - Spacewalk - Cosmic Stroll\n - Star Observatory and Planetarium\n - Visit to Martian Colonies',
+        offer2backgroundAsset: null,
+        offer2title: '',
+        offer2attractions: '',
       );
 
   @override
@@ -108,11 +136,12 @@ class ToursPage extends StatelessWidget {
                 title: offer1title,
                 attractions: offer1attractions,
               ),
-              OfferBox(
-                backgroundAsset: offer2backgroundAsset,
-                title: offer2title,
-                attractions: offer2attractions,
-              ),
+              if (offer2backgroundAsset != null)
+                OfferBox(
+                  backgroundAsset: offer2backgroundAsset!,
+                  title: offer2title,
+                  attractions: offer2attractions,
+                ),
             ],
           ),
         ),

@@ -53,9 +53,17 @@ class WebsiteScaffold extends StatelessWidget {
                   WebsitePage.home => HomePage(key: UniqueKey()),
                   WebsitePage.tours => currentRoute.contains('book')
                       ? BookTourPage()
-                      : currentRoute.contains('mars')
-                          ? ToursPage.mars
-                          : ToursPage.moon,
+                      : switch (currentRoute) {
+                          String() when currentRoute.contains('mars') =>
+                            ToursPage.mars,
+                          String() when currentRoute.contains('moon') =>
+                            ToursPage.mars,
+                          String() when currentRoute.contains('iss') =>
+                            ToursPage.iss,
+                          String() when currentRoute.contains('olympus') =>
+                            ToursPage.olympus,
+                          _ => HomePage(),
+                        },
                   WebsitePage.handbook => HandbookPage(key: UniqueKey()),
                   WebsitePage.about => AboutPage(key: UniqueKey()),
                 },
