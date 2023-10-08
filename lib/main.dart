@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         );
 
     return MaterialApp.router(
-      title: 'Flutter Demo',
+      title: 'Hermes Travel',
       theme: darkTheme,
       routerConfig: GoRouter(
         routes: [
