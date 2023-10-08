@@ -33,6 +33,7 @@ dependencies:
 
   auto_size_text: ^3.0.0
   go_router: ^11.1.2
+  file_saver: ^0.2.8
 
 dev_dependencies:
   flutter_test:
