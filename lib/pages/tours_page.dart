@@ -124,18 +124,20 @@ class ToursPage extends StatelessWidget {
           ),
         ),
         Container(
-          padding: EdgeInsets.all(32),
+          padding: EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(desc),
               SizedBox(height: 32),
               Text("Our offers", style: tt.headlineLarge),
+              SizedBox(height: 16),
               OfferBox(
                 backgroundAsset: offer1backgroundAsset,
                 title: offer1title,
                 attractions: offer1attractions,
               ),
+              SizedBox(height: 16),
               if (offer2backgroundAsset != null)
                 OfferBox(
                   backgroundAsset: offer2backgroundAsset!,
@@ -169,7 +171,6 @@ class OfferBox extends StatelessWidget {
     final c = t.colorScheme;
     return Container(
       height: 256,
-      margin: EdgeInsets.all(16),
       decoration: BoxDecoration(
         color: Color.lerp(c.background, Colors.white, 0.07),
         border: Border.all(
