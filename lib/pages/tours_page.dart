@@ -3,7 +3,60 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ToursPage extends StatelessWidget {
-  const ToursPage({Key? key}) : super(key: key);
+  final String backgroundAsset;
+  final String title;
+  final String desc;
+
+  final String offer1backgroundAsset;
+  final String offer1title;
+  final String offer1attractions;
+
+  final String offer2backgroundAsset;
+  final String offer2title;
+  final String offer2attractions;
+
+  const ToursPage({
+    Key? key,
+    required this.backgroundAsset,
+    required this.title,
+    required this.desc,
+    required this.offer1backgroundAsset,
+    required this.offer1title,
+    required this.offer1attractions,
+    required this.offer2backgroundAsset,
+    required this.offer2title,
+    required this.offer2attractions,
+  }) : super(key: key);
+
+  static get mars => ToursPage(
+        backgroundAsset: 'mars.jpg',
+        title: 'Mars',
+        desc:
+            "Mars’ surface is geologically diverse, full of impressive rock formations, volcanoes and wide valleys. Red sands and rocky formations create picturesque views that delight adventure lovers.",
+        offer1backgroundAsset: 'mars-business.jpg',
+        offer1title: 'Business Offer',
+        offer1attractions:
+            "Selected attractions:\n - The Hematite Baths\n - Crater of Hellas\n - Ski Resorts\n - Museum of the Government of Mars\n - The journey along the route of space rovers",
+        offer2backgroundAsset: 'mars-premium.jpg',
+        offer2title: 'Premium Offer',
+        offer2attractions:
+            "VIP Mars Tour with a Private Guide\n - Valles Marineris\n - Tharsis Montes\n - Unlimitted acces to Ski Resorts\n - Visiting the Tauri Valley",
+      );
+
+  static get moon => ToursPage(
+        backgroundAsset: 'moon.jpg',
+        title: 'Moon',
+        desc:
+            "Mars’ surface is geologically diverse, full of impressive rock formations, volcanoes and wide valleys. Red sands and rocky formations create picturesque views that delight adventure lovers.",
+        offer1backgroundAsset: 'moon-business.jpg',
+        offer1title: 'Business Offer',
+        offer1attractions:
+            "Museum History of the Moon\n - The Moon's Main Communication Port\n - Apollo 11 Landing Site\n - Exploring the Moonscape",
+        offer2backgroundAsset: 'moon-premium.jpg',
+        offer2title: 'Premium Offer',
+        offer2attractions:
+            "VIP Moon Tour with a Private Guid\n - Exploring the Moonscape\n - Visit to the light and dark side of the Moon Apollo 11 Landing Site\n - The Moon's Main Communication Port",
+      );
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +70,7 @@ class ToursPage extends StatelessWidget {
           height: 400,
           decoration: BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/mars.jpg'),
+              image: AssetImage('assets/$backgroundAsset'),
               fit: BoxFit.cover,
             ),
           ),
@@ -37,7 +90,7 @@ class ToursPage extends StatelessWidget {
             ),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text('Mars', style: tt.displayMedium),
+              child: Text(title, style: tt.displayMedium),
             ),
           ),
         ),
@@ -46,21 +99,18 @@ class ToursPage extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                  "Mars’ surface is geologically diverse, full of impressive rock formations, volcanoes and wide valleys. Red sands and rocky formations create picturesque views that delight adventure lovers."),
+              Text(desc),
               SizedBox(height: 32),
               Text("Our offers", style: tt.headlineLarge),
               OfferBox(
-                backgroundAsset: 'mars-business.jpg',
-                title: 'Business Offer',
-                attractions:
-                    "Selected attractions:\n - The Hematite Baths\n - Crater of Hellas\n - Ski Resorts\n - Museum of the Government of Mars\n - The journey along the route of space rovers",
+                backgroundAsset: offer1backgroundAsset,
+                title: offer1title,
+                attractions: offer1attractions,
               ),
               OfferBox(
-                backgroundAsset: 'mars-premium.jpg',
-                title: 'Premium Offer',
-                attractions:
-                    "VIP Mars Tour with a Private Guide\n - Valles Marineris\n - Tharsis Montes\n - Unlimitted acces to Ski Resorts\n - Visiting the Tauri Valley",
+                backgroundAsset: offer2backgroundAsset,
+                title: offer2title,
+                attractions: offer2attractions,
               ),
             ],
           ),

@@ -29,13 +29,13 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
   void didChangeDependencies() {
     super.didChangeDependencies();
     // idk if this does anything but 🤷
-    cache(String ass) => precacheImage(
-          AssetImage('assets/$ass'),
-          context,
-        );
-    cache('home-bg.jpg');
-    cache('mars.jpg');
-    cache('mars-bgn.jpg');
+    // cache(String ass) => precacheImage(
+    //       AssetImage('assets/$ass'),
+    //       context,
+    //     );
+    // cache('home-bg.jpg');
+    // cache('mars.jpg');
+    // cache('mars-bgn.jpg');
   }
 
   WebsitePage _selectedPage = WebsitePage.home;
@@ -59,7 +59,7 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
                 child: switch (_selectedPage) {
                   // keys are for AnimatedSwitcher to figure it out
                   WebsitePage.home => HomePage(key: UniqueKey()),
-                  WebsitePage.tours => ToursPage(key: UniqueKey()),
+                  WebsitePage.tours => ToursPage.moon,
                   WebsitePage.handbook => HandbookPage(key: UniqueKey()),
                   WebsitePage.about => AboutPage(key: UniqueKey()),
                 },
