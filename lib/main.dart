@@ -26,7 +26,6 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: darkTheme,
       routerConfig: GoRouter(
-        initialLocation: '/tours/mars/book',
         routes: [
           route('/'),
           route('/tours/mars'),
