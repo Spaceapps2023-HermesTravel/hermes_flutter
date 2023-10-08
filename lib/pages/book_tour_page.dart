@@ -8,7 +8,7 @@ class BookTourPage extends StatefulWidget {
 }
 
 class _BookTourPageState extends State<BookTourPage> {
-  bool booked = true;
+  bool booked = false;
 
   @override
   Widget build(BuildContext context) {
