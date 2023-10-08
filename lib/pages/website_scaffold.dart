@@ -57,7 +57,7 @@ class WebsiteScaffold extends StatelessWidget {
                           String() when currentRoute.contains('mars') =>
                             ToursPage.mars,
                           String() when currentRoute.contains('moon') =>
-                            ToursPage.mars,
+                            ToursPage.moon,
                           String() when currentRoute.contains('iss') =>
                             ToursPage.iss,
                           String() when currentRoute.contains('olympus') =>
