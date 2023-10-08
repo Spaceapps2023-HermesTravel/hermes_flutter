@@ -17,32 +17,37 @@ class DestinationsSection extends StatelessWidget {
           style: tt.headlineLarge,
         ),
         SizedBox(height: 16),
-        Row(
-          children: [
-            RoundedDestinationPreview(
-              backgroundAsset: 'mars.jpg',
-              title: 'Mars',
-              route: 'mars',
-            ),
-            SizedBox(width: 16),
-            RoundedDestinationPreview(
-              backgroundAsset: 'moon.jpg',
-              title: 'Moon',
-              route: 'moon',
-            ),
-            SizedBox(width: 16),
-            RoundedDestinationPreview(
-              backgroundAsset: 'iss.jpg',
-              title: 'ISS Museum',
-              route: 'iss-museum',
-            ),
-            SizedBox(width: 16),
-            RoundedDestinationPreview(
-              backgroundAsset: 'olympus.jpg',
-              title: 'Olympus space station',
-              route: 'olympus',
-            ),
-          ],
+        SizedBox(
+          height: 320,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            children: [
+              RoundedDestinationPreview(
+                backgroundAsset: 'mars.jpg',
+                title: 'Mars',
+                route: 'mars',
+              ),
+              SizedBox(width: 16),
+              RoundedDestinationPreview(
+                backgroundAsset: 'moon.jpg',
+                title: 'Moon',
+                route: 'moon',
+              ),
+              SizedBox(width: 16),
+              RoundedDestinationPreview(
+                backgroundAsset: 'iss.jpg',
+                title: 'ISS Museum',
+                route: 'iss-museum',
+              ),
+              SizedBox(width: 16),
+              RoundedDestinationPreview(
+                backgroundAsset: 'olympus.jpg',
+                title: 'Olympus space station',
+                route: 'olympus',
+              ),
+            ],
+          ),
         ),
       ],
     );

@@ -17,29 +17,34 @@ class ReviewsSection extends StatelessWidget {
           style: tt.headlineLarge,
         ),
         SizedBox(height: 16),
-        Row(
-          children: [
-            Review(
-              avatarAsset: 'user1.jpg',
-              name: 'Max',
-              review:
-                  "I didn't expect that interplanetary travel could be so fascinating! Mars surprised me with it’s beautiful red scenery. The travel agency took care of every detail, and the scientific excursions were truly educational. I recommend it to anyone who dreams of a unique adventure beyond our planet!",
-            ),
-            SizedBox(width: 16),
-            Review(
-              avatarAsset: 'user2.jpg',
-              name: 'Maya',
-              review:
-                  "Traveling to Mars with Hermes Travel was something I will never forget. The guides were full of passion for space, and each day brought new, exciting discoveries. It was more than just a journey for me - it was a cosmic festival of experiences!",
-            ),
-            SizedBox(width: 16),
-            Review(
-              avatarAsset: 'user3.jpg',
-              name: 'Jimmy',
-              review:
-                  "The journey to the International Space Station Museum was a stellar addition to my interplanetary travel itinerary. Kudos to the travel agency for providing an enriching experience. From the space history exhibits to the zero-gravity simulation, every moment was captivating. A fantastic blend of education and entertainment!",
-            ),
-          ],
+        SizedBox(
+          height: 288,
+          child: ListView(
+            scrollDirection: Axis.horizontal,
+            shrinkWrap: true,
+            children: [
+              Review(
+                avatarAsset: 'user1.jpg',
+                name: 'Max',
+                review:
+                    "I didn't expect that interplanetary travel could be so fascinating! Mars surprised me with it’s beautiful red scenery. The travel agency took care of every detail, and the scientific excursions were truly educational. I recommend it to anyone who dreams of a unique adventure beyond our planet!",
+              ),
+              SizedBox(width: 16),
+              Review(
+                avatarAsset: 'user2.jpg',
+                name: 'Maya',
+                review:
+                    "Traveling to Mars with Hermes Travel was something I will never forget. The guides were full of passion for space, and each day brought new, exciting discoveries. It was more than just a journey for me - it was a cosmic festival of experiences!",
+              ),
+              SizedBox(width: 16),
+              Review(
+                avatarAsset: 'user3.jpg',
+                name: 'Jimmy',
+                review:
+                    "The journey to the International Space Station Museum was a stellar addition to my interplanetary travel itinerary. Kudos to the travel agency for providing an enriching experience. From the space history exhibits to the zero-gravity simulation, every moment was captivating. A fantastic blend of education and entertainment!",
+              ),
+            ],
+          ),
         ),
       ],
     );
