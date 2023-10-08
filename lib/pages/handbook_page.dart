@@ -31,6 +31,7 @@ class HandbookPage extends StatelessWidget {
               child: Text(
                 'Download handbook',
                 style: TextStyle(fontSize: 32),
+                textAlign: TextAlign.center,
               ),
             ),
           ),

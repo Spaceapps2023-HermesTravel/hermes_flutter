@@ -39,8 +39,9 @@ class TopNavigationBar extends StatelessWidget {
           bottom: BorderSide(color: c.primary),
         ),
       ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+      alignment: Alignment.center,
+      child: Wrap(
+        alignment: WrapAlignment.center,
         children: [
           button(WebsitePage.home),
           button(WebsitePage.tours),
