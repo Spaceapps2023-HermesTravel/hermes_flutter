@@ -19,7 +19,7 @@ class _BookTourPageState extends State<BookTourPage> {
       children: [
         Image.asset('assets/space-bg.jpg', fit: BoxFit.cover),
         booked
-            ? TickerContent()
+            ? Center(child: TickerContent())
             : FormContent(onSubmit: () => setState(() => booked = true)),
       ],
     );
@@ -172,6 +172,10 @@ class TickerContent extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
+      constraints: BoxConstraints(
+        maxHeight: 300,
+        maxWidth: 800,
+      ),
       margin: EdgeInsets.symmetric(vertical: 256, horizontal: 128),
       // padding: EdgeInsets.all(64),
       decoration: BoxDecoration(
@@ -213,6 +217,8 @@ class TickerContent extends StatelessWidget {
           Expanded(
             flex: 2,
             child: Column(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text('Class: Business'),
                 Text('Code: 7440'),
