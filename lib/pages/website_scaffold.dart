@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 
 import '../top_navigation_bar.dart';
 import 'about_page.dart';
+import 'book_tour_page.dart';
 import 'handbook_page.dart';
 import 'home/home_page.dart';
 import 'tours_page.dart';
@@ -50,9 +51,11 @@ class WebsiteScaffold extends StatelessWidget {
                 child: switch (selectedPage) {
                   // keys are for AnimatedSwitcher to figure it out
                   WebsitePage.home => HomePage(key: UniqueKey()),
-                  WebsitePage.tours => currentRoute.contains('mars')
-                      ? ToursPage.mars
-                      : ToursPage.moon,
+                  WebsitePage.tours => currentRoute.contains('book')
+                      ? BookTourPage()
+                      : currentRoute.contains('mars')
+                          ? ToursPage.mars
+                          : ToursPage.moon,
                   WebsitePage.handbook => HandbookPage(key: UniqueKey()),
                   WebsitePage.about => AboutPage(key: UniqueKey()),
                 },

@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class ToursPage extends StatelessWidget {
   final String backgroundAsset;
@@ -186,7 +187,8 @@ class OfferBox extends StatelessWidget {
                 children: [
                   Text("TEXT FLIGHT: MARCH 255", style: tt.labelLarge),
                   FilledButton(
-                    onPressed: () {},
+                    // todo: this hardcode
+                    onPressed: () => context.go('/tours/mars/book'),
                     child: Padding(
                       padding: const EdgeInsets.all(32),
                       child: Text("BOOK NOW"),

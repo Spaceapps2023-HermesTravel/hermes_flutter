@@ -17,17 +17,22 @@ class MyApp extends StatelessWidget {
           path: route,
           builder: (context, state) =>
               WebsiteScaffold(currentRoute: state.matchedLocation),
-      pageBuilder: (context, state) => NoTransitionPage(child: WebsiteScaffold(currentRoute: state.matchedLocation),)
+          pageBuilder: (context, state) => NoTransitionPage(
+            child: WebsiteScaffold(currentRoute: state.matchedLocation),
+          ),
         );
 
     return MaterialApp.router(
       title: 'Flutter Demo',
       theme: darkTheme,
       routerConfig: GoRouter(
+        initialLocation: '/tours/mars/book',
         routes: [
           route('/'),
           route('/tours/mars'),
+          route('/tours/mars/book'),
           route('/tours/moon'),
+          route('/tours/moon/book'),
           route('/handbook'),
           route('/about'),
         ],
