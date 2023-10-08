@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import 'pages/website_scaffold.dart';
 import 'theme.dart';
@@ -12,10 +13,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    route(String route) => GoRoute(
+          path: route,
+          builder: (context, state) =>
+              WebsiteScaffold(currentRoute: state.matchedLocation),
+      pageBuilder: (context, state) => NoTransitionPage(child: WebsiteScaffold(currentRoute: state.matchedLocation),)
+        );
+
+    return MaterialApp.router(
       title: 'Flutter Demo',
       theme: darkTheme,
-      home: const WebsiteScaffold(),
+      routerConfig: GoRouter(
+        routes: [
+          route('/'),
+          route('/tours/mars'),
+          route('/tours/moon'),
+          route('/handbook'),
+          route('/about'),
+        ],
+      ),
     );
   }
 }

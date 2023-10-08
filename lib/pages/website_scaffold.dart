@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../top_navigation_bar.dart';
 import 'about_page.dart';
 import 'handbook_page.dart';
 import 'home/home_page.dart';
 import 'tours_page.dart';
-
-class WebsiteScaffold extends StatefulWidget {
-  const WebsiteScaffold({Key? key}) : super(key: key);
-
-  @override
-  State<WebsiteScaffold> createState() => _WebsiteScaffoldState();
-}
 
 enum WebsitePage {
   home('HOME'),
@@ -24,24 +18,21 @@ enum WebsitePage {
   const WebsitePage(this.title);
 }
 
-class _WebsiteScaffoldState extends State<WebsiteScaffold> {
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    // idk if this does anything but 🤷
-    // cache(String ass) => precacheImage(
-    //       AssetImage('assets/$ass'),
-    //       context,
-    //     );
-    // cache('home-bg.jpg');
-    // cache('mars.jpg');
-    // cache('mars-bgn.jpg');
-  }
+class WebsiteScaffold extends StatelessWidget {
+  final String currentRoute;
 
-  WebsitePage _selectedPage = WebsitePage.home;
+  const WebsiteScaffold({Key? key, required this.currentRoute})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final WebsitePage selectedPage = switch (currentRoute) {
+      '/' => WebsitePage.home,
+      String() when currentRoute.contains('/tours') => WebsitePage.tours,
+      '/handbook' => WebsitePage.handbook,
+      '/about' => WebsitePage.about,
+      String() => WebsitePage.home,
+    };
     return Scaffold(
       body: ListView(
         children: [
@@ -56,18 +47,26 @@ class _WebsiteScaffoldState extends State<WebsiteScaffold> {
                     if (currentChild != null) currentChild,
                   ],
                 ),
-                child: switch (_selectedPage) {
+                child: switch (selectedPage) {
                   // keys are for AnimatedSwitcher to figure it out
                   WebsitePage.home => HomePage(key: UniqueKey()),
-                  WebsitePage.tours => ToursPage.moon,
+                  WebsitePage.tours => currentRoute.contains('mars')
+                      ? ToursPage.mars
+                      : ToursPage.moon,
                   WebsitePage.handbook => HandbookPage(key: UniqueKey()),
                   WebsitePage.about => AboutPage(key: UniqueKey()),
                 },
               ),
               TopNavigationBar(
-                onSelected: (WebsitePage selectedPage) =>
-                    setState(() => _selectedPage = selectedPage),
-                selectedPage: _selectedPage,
+                onSelected: (WebsitePage selectedPage) {
+                  context.go(switch (selectedPage) {
+                    WebsitePage.home => '/',
+                    WebsitePage.tours => '/tours/mars',
+                    WebsitePage.handbook => '/handbook',
+                    WebsitePage.about => '/about',
+                  });
+                },
+                selectedPage: selectedPage,
               ),
             ],
           ),
