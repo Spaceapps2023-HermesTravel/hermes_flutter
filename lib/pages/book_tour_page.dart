@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
 import 'package:screenshot/screenshot.dart';
@@ -30,18 +28,16 @@ class _BookTourPageState extends State<BookTourPage> {
                     SizedBox(height: 16),
                     FilledButton(
                       onPressed: () {
-                        ScreenshotController.widgetToUiImage(
-                          TickerContent(),
-                          context: context,
-                          targetSize: Size(600, 370),
-                        ).then(
-                          (value) async => FileSaver.instance.saveFile(
-                              name: 'ticket.png',
-                              bytes: (await value.toByteData(
-                                      format: ImageByteFormat.png))!
-                                  .buffer
-                                  .asUint8List()),
-                        );
+                        ScreenshotController()
+                            .captureFromWidget(
+                              TickerContent(),
+                              context: context,
+                              targetSize: Size(600, 370),
+                            )
+                            .then(
+                              (value) async => FileSaver.instance
+                                  .saveFile(name: 'ticket.png', bytes: value),
+                            );
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(8),
