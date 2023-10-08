@@ -1,4 +1,8 @@
+import 'dart:ui';
+
+import 'package:file_saver/file_saver.dart';
 import 'package:flutter/material.dart';
+import 'package:screenshot/screenshot.dart';
 
 class BookTourPage extends StatefulWidget {
   const BookTourPage({Key? key}) : super(key: key);
@@ -8,7 +12,7 @@ class BookTourPage extends StatefulWidget {
 }
 
 class _BookTourPageState extends State<BookTourPage> {
-  bool booked = false;
+  bool booked = true;
 
   @override
   Widget build(BuildContext context) {
@@ -18,9 +22,43 @@ class _BookTourPageState extends State<BookTourPage> {
     return Stack(
       children: [
         Image.asset('assets/space-bg.jpg', fit: BoxFit.cover),
-        booked
-            ? Center(child: TickerContent())
-            : FormContent(onSubmit: () => setState(() => booked = true)),
+        Center(
+          child: booked
+              ? Column(
+                  children: [
+                    TickerContent(),
+                    SizedBox(height: 16),
+                    FilledButton(
+                      onPressed: () {
+                        ScreenshotController.widgetToUiImage(
+                          TickerContent(),
+                          context: context,
+                          targetSize: Size(600, 370),
+                        ).then(
+                          (value) async => FileSaver.instance.saveFile(
+                              name: 'ticket.png',
+                              bytes: (await value.toByteData(
+                                      format: ImageByteFormat.png))!
+                                  .buffer
+                                  .asUint8List()),
+                        );
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(8),
+                        child: Text(
+                          'Download',
+                          style: TextStyle(fontSize: 32),
+                        ),
+                      ),
+                    ),
+                  ],
+                )
+              : FormContent(
+                  onSubmit: () => setState(
+                    () => booked = true,
+                  ),
+                ),
+        ),
       ],
     );
   }
@@ -37,8 +75,9 @@ class FormContent extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
-      margin: EdgeInsets.symmetric(vertical: 128, horizontal: 64),
-      padding: EdgeInsets.all(64),
+      constraints: BoxConstraints(maxWidth: 1024),
+      margin: EdgeInsets.symmetric(vertical: 128, horizontal: 16),
+      padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
@@ -172,11 +211,8 @@ class TickerContent extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
-      constraints: BoxConstraints(
-        maxHeight: 300,
-        maxWidth: 800,
-      ),
-      margin: EdgeInsets.symmetric(vertical: 256, horizontal: 128),
+      constraints: BoxConstraints(maxWidth: 800),
+      margin: EdgeInsets.only(top: 128),
       // padding: EdgeInsets.all(64),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(16),
@@ -186,49 +222,44 @@ class TickerContent extends StatelessWidget {
         ),
         color: Color.lerp(c.background, Colors.white, 0.07),
       ),
-      child: Row(
+      child: Wrap(
         children: [
-          Expanded(
-            flex: 2,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(16),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(16),
+            child: SizedBox(
+              width: 192,
+              height: 192,
               child: Image.asset(
                 'assets/ticket-img.jpg',
                 fit: BoxFit.cover,
               ),
             ),
           ),
-          Expanded(
-            flex: 4,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text('Destination'),
-                  Text("EARTH -> MARS -> EARTH"),
-                  whiteText("NAME:      Mr Jimmy     "),
-                  whiteText("FROM:    10 Aug 2055  "),
-                  whiteText("TO:      10 Aug 2057       "),
-                ],
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 2,
+          Padding(
+            padding: const EdgeInsets.all(16),
             child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('Class: Business'),
-                Text('Code: 7440'),
-                SizedBox(
-                  width: 128,
-                  height: 128,
-                  child: Image.asset('assets/qr.png'),
-                ),
+                Text('Destination'),
+                Text("EARTH -> MARS -> EARTH"),
+                whiteText("NAME:      Mr Jimmy     "),
+                whiteText("FROM:    10 Aug 2055  "),
+                whiteText("TO:      10 Aug 2057       "),
               ],
             ),
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Text('Class: Business'),
+              Text('Code: 7440'),
+              SizedBox(
+                width: 128,
+                height: 128,
+                child: Image.asset('assets/qr.png'),
+              ),
+            ],
           ),
         ],
       ),

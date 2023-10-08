@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
       title: 'Hermes Travel',
       theme: darkTheme,
       routerConfig: GoRouter(
+        initialLocation: '/tours/iss-museum/book',
         routes: [
           route('/'),
           route('/tours/mars'),
