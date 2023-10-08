@@ -9,7 +9,7 @@ class NasaCertificate extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
-      constraints: BoxConstraints(maxHeight: 160),
+      constraints: BoxConstraints(maxHeight: 192),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(8),
         border: Border.all(
