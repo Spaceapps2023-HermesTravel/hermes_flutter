@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -119,7 +120,11 @@ class ToursPage extends StatelessWidget {
             ),
             child: Align(
               alignment: Alignment.bottomLeft,
-              child: Text(title, style: tt.displayMedium),
+              child: AutoSizeText(
+                title,
+                style: tt.displayMedium,
+                maxLines: 2,
+              ),
             ),
           ),
         ),
