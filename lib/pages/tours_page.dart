@@ -170,7 +170,7 @@ class OfferBox extends StatelessWidget {
     final tt = t.textTheme;
     final c = t.colorScheme;
     return Container(
-      // height: 256,
+      constraints: BoxConstraints(maxHeight: 4096),
       decoration: BoxDecoration(
         color: Color.lerp(c.background, Colors.white, 0.07),
         border: Border.all(
@@ -181,52 +181,43 @@ class OfferBox extends StatelessWidget {
       ),
       child: Wrap(
         children: [
-          Expanded(
-            flex: 1,
-            child: Image.asset('assets/$backgroundAsset', fit: BoxFit.cover),
-          ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(title, style: tt.titleLarge),
-                  Wrap(
-                    children: [
-                      for (var i = 0; i < 5; i++)
-                        Icon(Icons.star, color: c.primary),
-                      SizedBox(width: 8),
-                      Text(
-                          '${Random().nextInt(10) + 90}% of travelers recommend'),
-                    ],
-                  ),
-                  SizedBox(height: 16),
-                  Text(attractions)
-                ],
-              ),
+          Image.asset('assets/$backgroundAsset', fit: BoxFit.cover),
+          Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title, style: tt.titleLarge),
+                Wrap(
+                  children: [
+                    for (var i = 0; i < 5; i++)
+                      Icon(Icons.star, color: c.primary),
+                    SizedBox(width: 8),
+                    Text(
+                        '${Random().nextInt(10) + 90}% of travelers recommend'),
+                  ],
+                ),
+                SizedBox(height: 16),
+                Text(attractions)
+              ],
             ),
           ),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(32),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text("NEXT FLIGHT: MARCH 255", style: tt.labelLarge),
-                  SizedBox(height: 8),
-                  FilledButton(
-                    // todo: this hardcode
-                    onPressed: () => context.go('/tours/mars/book'),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16),
-                      child: Text("BOOK NOW", textAlign: TextAlign.center),
-                    ),
+          Padding(
+            padding: const EdgeInsets.all(32),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("NEXT FLIGHT: MARCH 255", style: tt.labelLarge),
+                SizedBox(height: 8),
+                FilledButton(
+                  // todo: this hardcode
+                  onPressed: () => context.go('/tours/mars/book'),
+                  child: Padding(
+                    padding: const EdgeInsets.all(16),
+                    child: Text("BOOK NOW", textAlign: TextAlign.center),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ],
